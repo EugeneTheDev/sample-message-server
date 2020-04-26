@@ -1,0 +1,1 @@
+web: java -jar ./build/libs/sample-message-server-1.0.jar

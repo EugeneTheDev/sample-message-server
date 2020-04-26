@@ -1,0 +1,36 @@
+POST /register
+Host: 127.0.0.1:8080
+Content-Type: application/json
+
+{
+  "username": "cool_user",
+  "firstName": "Jora",
+  "lastName": "Pupkin"
+}
+
+###
+
+GET /users
+Host: 127.0.0.1:8080
+
+
+###
+
+POST /postMessage
+Host: 127.0.0.1:8080
+Content-Type: application/json
+
+{
+  "author": "cool_user",
+  "text": "Text too"
+}
+
+###
+
+GET /allMessages
+Host: 127.0.0.1:8080
+
+###
+
+GET /lastMessages?sinceId=1
+Host: 127.0.0.1:8080
