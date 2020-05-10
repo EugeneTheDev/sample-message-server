@@ -43,11 +43,13 @@ fun main() {
             post("/register") {
                 val user = call.receive<User>()
 
-                if (!currentUsers.any { it.username == user.username }) {
-                    currentUsers.add(user)
-                    call.respond(SuccessMessage("User was registered"))
+                if (user.hasEmptyFields) {
+                    call.respond(HttpStatusCode.BadRequest, ErrorMessage("Empty fields detected"))
                 } else {
-                    call.respond(HttpStatusCode.BadRequest, ErrorMessage("User is already exist"))
+                    if (!currentUsers.any { it.username == user.username }) {
+                        currentUsers.add(user)
+                    }
+                    call.respond(SuccessMessage("User was logged"))
                 }
             }
 
@@ -74,7 +76,9 @@ data class User(
     val username: String,
     val firstName: String,
     val lastName: String
-)
+) {
+    val hasEmptyFields get() = username.isNullOrBlank() || firstName.isNullOrBlank() || lastName.isNullOrBlank()
+}
 
 data class Message(
     val id: Int,

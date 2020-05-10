@@ -1,11 +1,11 @@
 POST /register
-Host: 127.0.0.1:8080
+Host: 127.0.0.1:5000
 Content-Type: application/json
 
 {
   "username": "cool_user",
   "firstName": "Jora",
-  "lastName": "Pupkin"
+  "lastName": "Jora"
 }
 
 ###
@@ -34,3 +34,12 @@ Host: 127.0.0.1:8080
 
 GET /lastMessages?sinceId=1
 Host: 127.0.0.1:8080
+
+###
+POST https://sample-message-server.herokuapp.com/postMessage
+Content-Type: application/json
+
+{
+    "author": "eugene",
+    "text": "Hello everyone"
+}
